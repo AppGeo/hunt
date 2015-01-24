@@ -22,17 +22,26 @@ a[data-ember-action] {
   bottom: 0;
 }
 
-#main {
-  z-index: 100;
+#main,
+#main-background {
+  z-index: 101;
   position: absolute;
   right: 15px;
   top: 68px;
   bottom: 32px;
   left: 50%;
-  background-color: #FFF;
-  opacity: 0.8;
   padding: 1em;
   border-radius: 2px;
+}
+
+#main {
+  z-index: 101;
+}
+
+#main-background {
+  background-color: #FFF;
+  opacity: 0.8;
+  z-index: 100;
 }
 
 h3.slim {
