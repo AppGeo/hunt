@@ -11,7 +11,17 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+        <li>
+          {{#if session.isAnonymous}}
+            {{#link-to 'login'}}Login{{/link-to}}
+          {{else}}
+            {{#if session.user.google}}
+              {{#link-to 'profile' class='gravatar-holder'}}
+                {{gravatar-image email=session.user.google.email alt='Profile' size=34 default='identicon' class='img-circle'}}
+              {{/link-to}}
+            {{/if}}
+          {{/if}}
+        </li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
