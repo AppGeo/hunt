@@ -13,7 +13,6 @@ export default Ember.Route.extend({
           self.store.find('user', authData.uid)
             .then(function (user) {
               self.set('session.user', user);
-              self.transitionTo('index');
             }, function (error) {
               console.error(error);
             });
