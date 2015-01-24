@@ -3,10 +3,15 @@ import DataRoute from 'ember-data-route/mixins/data-route';
 
 export default Ember.Route.extend(DataRoute, {
   model: function () {
-    return this.store.createRecord('hunt');
+    var user = this.get('session.user');
+    var hunt = this.store.createRecord('hunt');
+
+    hunt.set('author', user);
+
+    return hunt;
   },
 
-  willTransitionConfirm: function() {
+  willTransitionConfirm: function () {
     return window.confirm('You have unsaved changes that will be lost. Do you want to continue?');
   },
 
