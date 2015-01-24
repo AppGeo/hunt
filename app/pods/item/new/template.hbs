@@ -1,0 +1,13 @@
+<h3 class="slim">Stop {{model.number}}</h3>
+
+<form class="form">
+  <p>Click the map to add a point, then put your clue below.</p>
+  <input type="hidden" {{bind-attr value=model.location}} />
+
+  <div class="form-group">
+    {{textarea class='form-control' rows=4 value=model.clue placeholder='Put your clue here'}}
+  </div>
+
+  <a class="btn" {{action 'finishHunt' this}}>Done</button>
+  <a class="btn btn-primary pull-right" {{action 'nextStop'}}>Next Stop</button>
+</form>
