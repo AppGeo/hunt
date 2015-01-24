@@ -31,10 +31,10 @@ var fonts = pickFiles(app.bowerDirectory + '/fontawesome/fonts', {
 });
 
 // Copy leaflet images
-var fonts = pickFiles(app.bowerDirectory + '/leaflet/dist/images', {
+var images = pickFiles(app.bowerDirectory + '/leaflet/dist/images', {
   srcDir: '/',
   files: ['**/*'],
   destDir: '/assets/images'
 });
 
-module.exports = mergeTrees([app.toTree(), fonts]);
+module.exports = mergeTrees([app.toTree(), fonts, images]);
