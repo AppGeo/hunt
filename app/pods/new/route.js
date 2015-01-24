@@ -18,6 +18,18 @@ export default Ember.Route.extend(DataRoute, {
         }, function (error) {
           console.error(error);
         });
+    },
+
+    addItem: function (model) {
+      var item = this.store.createRecord('item');
+
+      model.get('item').addObject(item);
+      model.save()
+        .then(function (data) {
+          console.log(data);
+        }, function (error) {
+          console.error(error);
+        });
     }
   }
 });
