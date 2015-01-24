@@ -12,15 +12,13 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          {{#if session.isAnonymous}}
-            {{#link-to 'login'}}Login{{/link-to}}
+          {{#unless session.isLoggedIn}}
+            <a {{action 'login' 'google'}}><i class="fa fa-google"></i> Login with Google</a>
           {{else}}
-            {{#if session.user.google}}
-              {{#link-to 'profile' class='gravatar-holder'}}
-                {{gravatar-image email=session.user.google.email alt='Profile' size=34 default='identicon' class='img-circle'}}
-              {{/link-to}}
-            {{/if}}
-          {{/if}}
+            {{#link-to 'profile' class='gravatar-holder'}}
+              {{gravatar-image email=session.user.google.email alt='Profile' size=34 default='identicon' class='img-circle'}} {{session.user.name}}
+            {{/link-to}}
+          {{/unless}}
         </li>
       </ul>
     </div><!--/.nav-collapse -->
