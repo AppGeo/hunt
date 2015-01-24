@@ -16,7 +16,7 @@
             <a {{action 'login' 'google'}}><i class="fa fa-google"></i> Login with Google</a>
           {{else}}
             {{#link-to 'profile' class='gravatar-holder'}}
-              {{gravatar-image email=session.user.google.email alt='Profile' size=34 default='identicon' class='img-circle'}} {{session.user.name}}
+              {{gravatar-image email=session.user.email alt='Profile' size=34 default='identicon' class='img-circle'}} {{session.user.name}}
             {{/link-to}}
           {{/unless}}
         </li>
