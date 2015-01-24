@@ -20,12 +20,21 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
+app.import(app.bowerDirectory + '/leaflet/dist/leaflet-src.js');
+app.import(app.bowerDirectory + '/leaflet/dist/leaflet.css');
 
 // Copy fontawesome fonts
 var fonts = pickFiles(app.bowerDirectory + '/fontawesome/fonts', {
   srcDir: '/',
   files: ['**/*'],
   destDir: '/assets/fonts'
+});
+
+// Copy leaflet images
+var fonts = pickFiles(app.bowerDirectory + '/leaflet/dist/images', {
+  srcDir: '/',
+  files: ['**/*'],
+  destDir: '/assets/images'
 });
 
 module.exports = mergeTrees([app.toTree(), fonts]);
