@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ss15-appgeo',
+    podModulePrefix: 'ss15-appgeo/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
