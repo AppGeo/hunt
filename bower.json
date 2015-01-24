@@ -15,6 +15,11 @@
     "qunit": "~1.15.0",
     "bootstrap": "~3.3.2",
     "fontawesome": "~4.3.0",
-    "leaflet": "~0.7.3"
+    "leaflet": "~0.7.3",
+    "emberfire": "~1.3.2"
+  },
+  "resolutions": {
+    "handlebars": "~1.3.0",
+    "ember": "1.8.1"
   }
 }
