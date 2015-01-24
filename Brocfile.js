@@ -22,6 +22,8 @@ var app = new EmberApp();
 app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
 app.import(app.bowerDirectory + '/leaflet/dist/leaflet-src.js');
 app.import(app.bowerDirectory + '/leaflet/dist/leaflet.css');
+app.import(app.bowerDirectory + '/leaflet.locatecontrol/dist/L.Control.Locate.css');
+app.import(app.bowerDirectory + '/leaflet.locatecontrol/src/L.Control.Locate.js');
 
 // Copy fontawesome fonts
 var fonts = pickFiles(app.bowerDirectory + '/fontawesome/fonts', {
