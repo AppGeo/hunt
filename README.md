@@ -43,7 +43,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 Specify what it takes to deploy your app.
 
-`ember divshot push` to deploy to http://development.ss15-appgeo.divshot.io
+`ember divshot push` to deploy to http://development.ss15-appgeo.divshot.io  
 `ember divshot push production` to deploy to https://ss15-appgeo.divshot.io
 
 
