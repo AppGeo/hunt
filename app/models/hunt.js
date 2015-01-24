@@ -9,5 +9,7 @@ export default DS.Model.extend({
   description: attr('string'),
   author: belongsTo('user', { async: true }),
 
-  items: hasMany('item', { async: true })
+  items: hasMany('item', { async: true }),
+
+  markers: L.layerGroup()
 });

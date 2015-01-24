@@ -11,6 +11,13 @@ export default Ember.Route.extend(DataRoute, {
     return hunt;
   },
 
+  setupController: function (controller, model) {
+    this._super(controller, model);
+
+    var map = this.get('mapService.map');
+    map.addLayer(model.markers);
+  },
+
   willTransitionConfirm: function () {
     return window.confirm('You have unsaved changes that will be lost. Do you want to continue?');
   },
@@ -29,6 +36,8 @@ export default Ember.Route.extend(DataRoute, {
     },
 
     addItem: function (model) {
+      var map = this.get('mapService.map');
+      var marker = L.marker(map.getCenter());
       var items = model.get('items');
       var item = this.store.createRecord('item', {
         location: [40, -70],
@@ -36,6 +45,7 @@ export default Ember.Route.extend(DataRoute, {
         description: items.get('length') + 1
       });
 
+      model.markers.addLayer(marker);
       model.get('items').addObject(item);
     }
   }
