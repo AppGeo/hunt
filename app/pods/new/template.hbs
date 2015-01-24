@@ -12,12 +12,15 @@
   <h4>Items</h4>
 
   <ul class="list-group">
-    <li class="list-group-item">
-      Boston, MA <i class="fa fa-pencil pull-right"></i>
-    </li>
-    <button type="button" class="list-group-item text-center" {{action 'addItem' model}}>
+    {{#each item in model.items}}
+      <li class="list-group-item">
+        {{item.description}} <i class="fa fa-pencil pull-right"></i>
+      </li>
+    {{/each}}
+
+    <a class="list-group-item text-center" {{action 'addItem' model}}>
       <i class="fa fa-plus"></i> New Item
-    </button>
+    </a>
   </ul>
 
   <button type="submit" class="btn btn-primary pull-right">Save</button>

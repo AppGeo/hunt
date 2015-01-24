@@ -7,5 +7,5 @@ export default DS.Model.extend({
   name: attr('string'),
   description: attr('string'),
 
-  items: hasMany('item')
+  items: hasMany('item', { async: true })
 });

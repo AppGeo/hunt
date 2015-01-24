@@ -6,7 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('hunt', { path: '/hunt/:hunt_id' });
+  this.resource('hunt', { path: '/hunt/:hunt_id' }, function () {
+  
+  });
   this.route('login');
   this.route('new');
 });

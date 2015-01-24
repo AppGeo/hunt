@@ -12,24 +12,26 @@ export default Ember.Route.extend(DataRoute, {
 
   actions: {
     create: function (model) {
-      model.save()
+      var self = this;
+
+      Ember.RSVP.all([model.get('items').invoke('save'), model.save()])
         .then(function (data) {
           console.log(data);
+          self.transitionTo('hunt', data[1].id);
         }, function (error) {
           console.error(error);
         });
     },
 
     addItem: function (model) {
-      var item = this.store.createRecord('item');
+      var items = model.get('items');
+      var item = this.store.createRecord('item', {
+        location: [40, -70],
+        clue: '',
+        description: items.get('length') + 1
+      });
 
-      model.get('item').addObject(item);
-      model.save()
-        .then(function (data) {
-          console.log(data);
-        }, function (error) {
-          console.error(error);
-        });
+      model.get('items').addObject(item);
     }
   }
 });
