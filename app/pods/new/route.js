@@ -37,7 +37,9 @@ export default Ember.Route.extend(DataRoute, {
 
     addItem: function (model) {
       var map = this.get('mapService.map');
-      var marker = L.marker(map.getCenter());
+      var marker = L.marker(map.getCenter(), {
+        draggable: true
+      });
       var items = model.get('items');
       var item = this.store.createRecord('item', {
         location: [40, -70],
@@ -45,6 +47,8 @@ export default Ember.Route.extend(DataRoute, {
         description: items.get('length') + 1
       });
 
+      marker.setPopupContent('Move me!');
+      marker.openPopup();
       model.markers.addLayer(marker);
       model.get('items').addObject(item);
     }
