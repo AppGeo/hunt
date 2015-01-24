@@ -6,9 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route("hunt");
-  this.route("login");
-  this.route("new");
+  this.resource('hunt', { path: '/hunt/:hunt_id' });
+  this.route('login');
+  this.route('new');
 });
 
 export default Router;
