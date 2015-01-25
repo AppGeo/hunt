@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
       addItem(this.get('model'));
 
       // Go to next item by creating the next model.
-      var newItem = this.store.createRecord('item', { number: items.length + 1 });
+      var newItem = this.store.createRecord('item', { number: window.items.length + 1 });
       this.set('model', newItem);
     },
 
