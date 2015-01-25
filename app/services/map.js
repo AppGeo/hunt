@@ -28,12 +28,22 @@ export default Ember.Object.extend({
   }.on('init'),
 
   initLocate: function (map) {
+    var self = this;
     var lc = L.control.locate({
-      watch: true,
-      enableHighAccuracy: true
+      follow: true,
+      locateOptions: {
+        watch: true,
+        enableHighAccuracy: true
+      }
     }).addTo(map);
 
     lc.start();
+
+    map.on('locationfound', function () {
+      Ember.run(function () {
+        self.set('followingLocation', map.getCenter());
+      });
+    });
   },
 
   attachTo: function ($el) {

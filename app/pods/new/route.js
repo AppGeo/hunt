@@ -15,7 +15,7 @@ export default Ember.Route.extend(DataRoute, {
     this._super(controller, model);
 
     var map = this.get('mapService.map');
-    map.addLayer(model.markers);
+    map.addLayer(model.get('markers'));
   },
 
   willTransitionConfirm: function () {
@@ -25,10 +25,16 @@ export default Ember.Route.extend(DataRoute, {
   actions: {
     create: function (model) {
       var self = this;
+      var map = this.get('mapService.map');
+      var markers = model.get('markers');
+      var huntCenter = markers.getBounds().getCenter();
+
+      model.set('location', [huntCenter.lat, huntCenter.lng]);
 
       Ember.RSVP.all([model.get('items').invoke('save'), model.save()])
         .then(function (data) {
           console.log(data);
+          map.removeLayer(markers);
           self.transitionTo('hunt', data[1].id);
         }, function (error) {
           console.error(error);
@@ -37,19 +43,31 @@ export default Ember.Route.extend(DataRoute, {
 
     addItem: function (model) {
       var map = this.get('mapService.map');
-      var marker = L.marker(map.getCenter(), {
+      var targetLatLng = map.getCenter();
+      var targetPoint = map.project(targetLatLng, map.getZoom()).subtract([map.getSize().x / 4, 0]),
+          targetLatLng = map.unproject(targetPoint, map.getZoom());
+      var marker = L.marker(targetLatLng, {
         draggable: true
       });
       var items = model.get('items');
       var item = this.store.createRecord('item', {
-        location: [40, -70],
+        location: [targetLatLng.lat, targetLatLng.lng],
         clue: '',
         description: items.get('length') + 1
       });
 
-      marker.setPopupContent('Move me!');
+      var popup = L.popup()
+        .setContent('<p>Move me to the right location!</p>');
+
+      marker.on('dragend', function () {
+        var ll = marker.getLatLng();
+
+        item.set('location', [ll.lat, ll.lng]);
+      });
+
+      model.get('markers').addLayer(marker);
+      marker.bindPopup(popup);
       marker.openPopup();
-      model.markers.addLayer(marker);
       model.get('items').addObject(item);
     }
   }
