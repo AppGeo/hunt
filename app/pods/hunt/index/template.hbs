@@ -1,8 +1,7 @@
-<h3 class="slim">{{model.name}}</h3>
-<h6>By {{model.author.name}}</h6>
-
 <p class="lead">{{model.description}}</p>
 
-There are {{items.length}} items in this hunt.
+<p>
+  There are {{items.length}}  items in this hunt.
+</p>
 
-<button type="button" class="btn btn-primary btn-block">Start Hunt</button>
+{{#link-to 'hunt.start' class='btn btn-primary btn-block'}}Start Hunt{{/link-to}}

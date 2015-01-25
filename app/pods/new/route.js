@@ -44,14 +44,14 @@ export default Ember.Route.extend(DataRoute, {
     addItem: function (model) {
       var map = this.get('mapService.map');
       var targetLatLng = map.getCenter();
-      var targetPoint = map.project(targetLatLng, map.getZoom()).subtract([map.getSize().x / 4, 0]),
-          targetLatLng = map.unproject(targetPoint, map.getZoom());
-      var marker = L.marker(targetLatLng, {
+      var targetPoint = map.project(targetLatLng, map.getZoom()).subtract([map.getSize().x / 4, 0]);
+      var ll = map.unproject(targetPoint, map.getZoom());
+      var marker = L.marker(ll, {
         draggable: true
       });
       var items = model.get('items');
       var item = this.store.createRecord('item', {
-        location: [targetLatLng.lat, targetLatLng.lng],
+        location: [ll.lat, ll.lng],
         clue: '',
         description: items.get('length') + 1
       });

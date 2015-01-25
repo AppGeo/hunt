@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import DS from 'ember-data';
 
 export default Ember.Route.extend({
   ref: new Firebase('https://scorching-heat-6592.firebaseio.com/hunts'),
