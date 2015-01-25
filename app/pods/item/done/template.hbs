@@ -1,0 +1,23 @@
+<h3 class="slim">Save Hunt</h3>
+
+<form class="form" {{action 'create' model on='submit'}}>
+  <div class="form-group">
+    {{input type='text' value=model.name class='form-control' required=true placeholder='Name'}}
+  </div>
+
+  <div class="form-group">
+    {{textarea class='form-control' rows=4 value=model.description placeholder='Description'}}
+  </div>
+
+  <h4>Items</h4>
+
+  <ul class="list-group">
+    {{#each item in model.items}}
+    <li class="list-group-item">
+      {{item.clue}}
+    </li>
+    {{/each}}
+  </ul>
+
+  <button type="submit" class="btn btn-primary pull-right">Save</button>
+</form>

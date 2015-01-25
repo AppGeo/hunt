@@ -10,12 +10,13 @@ Router.map(function() {
 
   });
 
-  this.resource('stop', function () {
+  this.resource('item', function () {
     this.route('new');
+    this.route('done');
   });
 
   this.route('new');
-  this.route("profile");
+  this.route('profile');
 });
 
 export default Router;

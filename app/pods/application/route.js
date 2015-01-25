@@ -74,7 +74,7 @@ export default Ember.Route.extend({
         localStorage.setItem('token', authData.token);
         self.set('session.user', user);
         self.transitionTo('index');
-      }, function (error) {
+      }, function () {
         var google = authData.google;
         var data = {
           name: google.displayName,
