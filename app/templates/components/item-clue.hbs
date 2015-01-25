@@ -1,0 +1,11 @@
+<h3>{{item.description}}</h3>
+
+<p class="lead">
+  {{item.clue}}
+</p>
+
+{{#if inProximity}}
+  <a {{action 'complete'}} class="btn btn-primary">Complete!</a>
+{{else}}
+  <i>Keep trying, you will find it eventually :)</i>
+{{/if}}

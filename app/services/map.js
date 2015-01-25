@@ -25,6 +25,7 @@ export default Ember.Object.extend({
     this.initLocate(map);
     this.set('map', map);
     this.set('$container', $container);
+    window.map = map;
   }.on('init'),
 
   initLocate: function (map) {
