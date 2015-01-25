@@ -5,7 +5,7 @@ import {
 
 moduleForModel('hunt', 'Hunt', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:user', 'model:item']
 });
 
 test('it exists', function() {
