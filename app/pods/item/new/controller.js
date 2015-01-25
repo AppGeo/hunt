@@ -5,10 +5,7 @@ export default Ember.Controller.extend({
   actions: {
 
     nextStop: function () {
-      // Save this item to a global object. This is a hackathon, right?
-      var items = window.items || [];
-      items.push(this.get('model'));
-      window.items = items;
+      addItem(this.get('model'));
 
       // Go to next item by creating the next model.
       var newItem = this.store.createRecord('item', { number: items.length + 1 });
@@ -16,9 +13,17 @@ export default Ember.Controller.extend({
     },
 
     finishHunt: function () {
+      addItem(this.get('model'));
       this.transitionToRoute('item.done');
     }
 
   }
 
 });
+
+function addItem(item) {
+  // Save this item to a global object. This is a hackathon, right?
+  var items = window.items || [];
+  items.push(item);
+  window.items = items;
+}
