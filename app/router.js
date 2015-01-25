@@ -7,10 +7,11 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('hunt', { path: '/hunt/:hunt_id' }, function () {
-  
+    this.route('start');
   });
+
   this.route('new');
-  this.route("profile");
+  this.route('profile');
 });
 
 export default Router;
