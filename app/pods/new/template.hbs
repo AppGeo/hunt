@@ -13,9 +13,11 @@
 
   <ul class="list-group">
     {{#each item in model.items}}
-      <li class="list-group-item">
-        {{item.description}} <i class="fa fa-pencil pull-right"></i>
-      </li>
+      {{#if item.clue}}
+        <li class="list-group-item">
+          {{item.description}} <i class="fa fa-pencil pull-right"></i>
+        </li>
+      {{/if}}
     {{/each}}
 
     <a class="list-group-item text-center" {{action 'addItem' model}}>

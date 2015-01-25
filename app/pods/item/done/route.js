@@ -7,7 +7,10 @@ export default Ember.Route.extend(DataRoute, {
     var hunt = this.store.createRecord('hunt');
 
     hunt.set('author', user);
-		hunt.set('items', window.items);
+
+    if (window.items) {
+      hunt.get('items').addObjects(window.items);
+    }
 
     return hunt;
   },
@@ -16,7 +19,11 @@ export default Ember.Route.extend(DataRoute, {
     this._super(controller, model);
 
     var map = this.get('mapService.map');
-    map.addLayer(model.markers);
+    var markers = model.get('markers');
+
+    if (markers) {
+      map.addLayer(markers);
+    }
   },
 
   willTransitionConfirm: function () {
@@ -27,7 +34,7 @@ export default Ember.Route.extend(DataRoute, {
     create: function (model) {
       var self = this;
 
-      Ember.RSVP.all([model.get('items').invoke('save'), model.save()])
+      model.save()
         .then(function (data) {
           console.log(data);
           self.transitionTo('hunt', data[1].id);

@@ -11,7 +11,7 @@ export default DS.Model.extend({
   location: attr(),
   author: belongsTo('user', { async: true }),
 
-  items: hasMany('item', { async: true }),
+  items: hasMany('item'),
 
   markers: L.featureGroup(),
 
@@ -21,11 +21,10 @@ export default DS.Model.extend({
 
     if (items.get('length')) {
       items.forEach(function (item) {
-        //TODO: location is undefined
         var location = item.get('location');
 
         if (location) {
-          var marker = L.marker(item.get('location'));
+          var marker = L.marker(location.split(','));
 
           group.addLayer(marker);
         }

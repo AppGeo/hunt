@@ -7,6 +7,7 @@ export default Ember.Component.extend({
     var itemLatLng;
 
     if (itemLocation && current) {
+      itemLocation = itemLocation.split(',');
       itemLatLng = L.latLng(itemLocation);
 
       if (itemLatLng.distanceTo(current) < 300) {

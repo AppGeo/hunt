@@ -16,7 +16,17 @@ export default Ember.View.extend({
 });
 
 function onMapClick (e) {
-  console.log('onMapClick', e);
-  var latlng = e.latlng.lat + ',' + e.latlng.lng;
-  this.get('controller.model').set('location', latlng);
+  var self = this;
+
+  Ember.run(function () {
+    var map = self.get('mapService.map');
+    var model = self.get('controller.model');
+    var latlng = e.latlng.lat + ',' +  e.latlng.lng;
+    var marker = L.marker(e.latlng);
+
+    console.log('onMapClick', e);
+    map.addLayer(marker);
+    model.set('location', latlng);
+    model.marker = marker;
+  });
 }

@@ -1,1 +1,5 @@
-{{item-clue item=currentItem currentLocation=mapService.followingLocation itemComplete='nextItem'}}
+{{#if currentItem}}
+  {{item-clue item=currentItem currentLocation=mapService.followingLocation itemComplete='nextItem'}}
+{{else}}
+  You Win!
+{{/if}}
