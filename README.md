@@ -45,7 +45,7 @@ npm run deploy
 ```
 
 
-`ember divshot push` to deploy to http://development.aghunt.divshot.io
+`ember divshot push` to deploy to http://development.aghunt.divshot.io  
 `ember divshot push production` to deploy to https://aghunt.divshot.io
 
 
