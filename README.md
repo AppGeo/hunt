@@ -45,8 +45,8 @@ npm run deploy
 ```
 
 
-`ember divshot push` to deploy to http://development.ss15-appgeo.divshot.io  
-`ember divshot push production` to deploy to https://ss15-appgeo.divshot.io
+`ember divshot push` to deploy to http://development.aghunt.divshot.io
+`ember divshot push production` to deploy to https://aghunt.divshot.io
 
 
 For more info, see `ember divshot -h` or https://github.com/rwjblue/ember-cli-divshot.
